@@ -2,6 +2,9 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
 
 const myInput = document.querySelector("#datetime-picker");
 const timeRef = document.querySelector('.timer');
@@ -53,6 +56,7 @@ const timer = {
         Object.entries(data).forEach(([name, value]) => {
         this.refs[name].textContent = this.twoCharacterNumber(value);
         });
+        document.body.style.background = getRandomHexColor();
         }, 1000);
         this.getRefs(rootRef);
             Notify.success('START', notifyOptions);
